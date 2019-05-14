@@ -12,6 +12,11 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1",
+    "yarn": "1.10.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
