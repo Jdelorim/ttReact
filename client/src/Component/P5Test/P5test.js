@@ -1,5 +1,7 @@
 import React from 'react';
 import p5 from 'p5';
+import './P5test.css';
+
 
 class P5Test extends React.Component {
     constructor(props) {
@@ -11,26 +13,24 @@ class P5Test extends React.Component {
         this.myP5 = new p5(this.Sketch, this.myRef.current)
     }
 
-    // componentDidUpdate() {
-    //     this.myP5 = new p5(this.Sketch, this.myRef.current)
-    // }
+  
 
     Sketch = (p) => {
+        
         let time, ranx, rany, ranc;
 
         p.setup = () => {
-            p.createCanvas(1280,720);
+             p.createCanvas(p.windowWidth,200);
             time = 0; 
             ranx = p.random(p.width);
             rany = p.random(p.height);
             ranc = p.random(100,255);
-            
 
         }
 
         p.draw = () =>{
             
-            p.background(0);
+            p.background(100);
             p.stroke(ranc);
             p.strokeWeight(time);
 
@@ -53,14 +53,21 @@ class P5Test extends React.Component {
           p.line(x,y,x1,y1);
         }
 
+        p.windowResized=()=>{
+            p.resizeCanvas(p.windowWidth, 200);
+        }
+       
+
 
     }
    
     
     render(){
         return (
-            <div ref={this.myRef}>
-
+            <div className='p5-container' ref={this.myRef}>
+                <div className='p5-title'>
+                    TRASHTRASH
+                </div>
             </div>
         )
     }

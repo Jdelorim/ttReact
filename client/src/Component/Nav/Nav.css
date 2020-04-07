@@ -1,0 +1,10 @@
+.nav-title{
+    color: white;
+    background-color: black;
+    font-family: Arial Black;
+    z-index: 8;
+}
+
+.nav-container{
+    position: relative;
+}

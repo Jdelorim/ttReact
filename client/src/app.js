@@ -1,12 +1,15 @@
 import React from 'react';
-import P5Test from './Component/P5Test/P5test';
+ import P5Grid from './Component/P5Test/P5Grid';
+import Nav from './Component/Nav/Nav';
+import './app.css';
 
 class App extends React.Component{
     render(){
         return(
-            <div className='container'>
-                <P5Test/>
-            </div>
+        <div className='container'>
+            <Nav/>
+           
+        </div>
         )
     }
 }
