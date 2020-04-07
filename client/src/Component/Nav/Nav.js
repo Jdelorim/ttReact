@@ -9,7 +9,7 @@ class Nav extends React.Component{
             <div className='nav-container'>
                 <P5Grid />
                 <div className='nav-title'>
-                    Joshua deLorimier
+                   
                 </div>
             </div>
         )

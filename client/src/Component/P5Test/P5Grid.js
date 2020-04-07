@@ -22,10 +22,10 @@ class P5Grid extends React.Component {
         
         let time, size;
         let fcolor = [];
-        const getStartWidth = p.width;
+        var myCanvas;
 
         p.setup = () => {
-             p.createCanvas(p.windowWidth,200);
+            myCanvas = p.createCanvas(p.windowWidth,200);
             time = 0; 
             size = 20;
             for(let i=1;i<p.width;i+=size) {
@@ -35,6 +35,8 @@ class P5Grid extends React.Component {
                 }
                 
             }
+            myCanvas.position(0,0);
+            myCanvas.style('z-index', '-10');
             
             p.frameRate(60);
       
@@ -85,11 +87,24 @@ class P5Grid extends React.Component {
     
     render(){
         return (
+            <>
             <div className='p5-container' ref={this.myRef}>
+            </div>
+                 <div className='p5-menu'>
                 <div className='p5-title'>
                     TRASHTRASH
+                
+                <div className='p5-menu-holder'>
+                    <ul>
+                        <li>Bio</li>
+                        <li>Works</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                    </ul>
                 </div>
-            </div>
+                </div>
+                </div>
+           </>
         )
     }
    
