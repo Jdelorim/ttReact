@@ -8,9 +8,9 @@ class Nav extends React.Component{
         return(
             <div className='nav-container'>
                 <P5Grid />
-                <div className='nav-title'>
-                   
-                </div>
+                
+                
+
             </div>
         )
     }

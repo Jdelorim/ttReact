@@ -13,12 +13,8 @@ class P5Test extends React.Component {
         this.myP5 = new p5(this.Sketch, this.myRef.current)
     }
 
-  
-
     Sketch = (p) => {
-        
         let time, ranx, rany, ranc;
-
         p.setup = () => {
              p.createCanvas(p.windowWidth,200);
             time = 0; 
@@ -65,9 +61,7 @@ class P5Test extends React.Component {
     render(){
         return (
             <div className='p5-container' ref={this.myRef}>
-                <div className='p5-title'>
-                    TRASHTRASH
-                </div>
+                
             </div>
         )
     }

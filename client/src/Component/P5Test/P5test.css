@@ -1,6 +1,6 @@
 .p5-container canvas{
 
-    position: absolute;
+    top: 0;
    
     font-family: Arial Black;
      
@@ -28,7 +28,6 @@
     display: inline;
     padding: 0.5em;
     color: white;
-    
 }
 
 .p5-menu li:hover {
