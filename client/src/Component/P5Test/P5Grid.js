@@ -23,13 +23,16 @@ class P5Grid extends React.Component {
   
     Sketch = (p) => {
        
-        let time, size;
+        let time,time2, size;
         let fcolor = [];
         var myCanvas;
-        let song, rev;
+        let osc,osc2, rev;
+        let startA;
        
         //---------------Setup--------------------------
+    
         p.setup = () => {
+            
             myCanvas = p.createCanvas(p.windowWidth,200, p.WEBGL);
             time = 0; 
             size = 20;
@@ -40,24 +43,36 @@ class P5Grid extends React.Component {
                 }
                 
             }
-             myCanvas.position(0,0);
+            myCanvas.position(0,0);
             myCanvas.style('z-index', '-10');
             
             p.frameRate(60);
           
             p.rectMode(p.CENTER);
-            song = new p5.Oscillator('sine');
+
+            startA = false;
+          
+
+            // osc.amp(0,0.5);
+            // osc.start();
+            // rev.drywet(90);
+            // rev.process(osc,3,2);
+
+            
+            osc = new p5.Oscillator('sawtooth');
+            osc2 = new p5.Oscillator('sine');
             rev = new p5.Reverb();
-            song.amp(0,0.5);
-            song.start();
-            rev.drywet(100);
-            rev.process(song,3,2);
 
            
 
         }
+        //osc
+
+     
+
         //----------------DRAW------------------------
         p.draw = () =>{
+            
             
             p.background(0);
             p.translate(-p.width/2,-p.height/2,0);
@@ -88,10 +103,53 @@ class P5Grid extends React.Component {
             
             // console.log('px: ', px);
             time=time+1;
-           
             
+           
+             time2 = p.millis()/60;
+            let newTime = Math.round((time2 % 8)) + 1;
+            if(newTime === 8) {
+                console.log('HIT!')
+                playOsc(220);
+            } else if (newTime === 4) {
+                console.log('HIT AGAIN!')
+            } else {
+                //volDown();
+            }
+            // console.log(newTime);
+         
+
         }
-        p.windowResized=()=>{
+      
+         const playOsc = (n) => {
+            console.log('should be playing sound');
+            console.log(n);
+            osc.start();
+            osc2.start();
+            osc2.amp(0.5);
+            osc2.freq(2);
+            osc.amp(0.05,0.1);
+
+            osc.freq(n);
+            osc.freq(osc2);
+            osc2.amp(0,1.0);
+           // osc2.stop();
+        }
+        
+     
+     
+        const logKey = (e) => {
+            console.log(`pressed ${e.code}`);
+            playOsc((Math.random()*100)+60);
+        }
+        const volDown = () => {
+            console.log('key is up');
+            osc.amp(0,1.0);
+            console.log(osc.amp());
+        }
+        document.addEventListener('keydown', logKey);
+         document.addEventListener('keyup',volDown );
+       
+         p.windowResized=()=>{
             p.resizeCanvas(p.windowWidth, 200);
             for(let i=1;i<p.width;i+=size) {
                 for(let j=1;j<p.height;j+=size) {
@@ -101,20 +159,11 @@ class P5Grid extends React.Component {
                 
             }
         }
-        p.mousePressed=()=> {
-           
-                p.userStartAudio();
-              
-        }
-    //     p.mouseMoved=()=>{
-    //         time=time+1;
-      
-       
-    // }
+
+ 
 
     }
    
-    
     render(){
         return (
             <>
