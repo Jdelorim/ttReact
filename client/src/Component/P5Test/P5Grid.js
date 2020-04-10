@@ -132,7 +132,7 @@ class P5Grid extends React.Component {
             osc.freq(n);
             osc.freq(osc2);
             osc2.amp(0,1.0);
-           // osc2.stop();
+           
         }
         
      
