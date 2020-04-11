@@ -14,7 +14,7 @@ class Nav extends React.Component{
         return(
             <div className='nav-container'>
                 <P5Grid />
-                 <P5Adsr/> 
+                 {/* <P5Adsr/>  */}
             </div>
         )
     }

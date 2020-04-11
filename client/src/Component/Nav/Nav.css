@@ -1,10 +1,6 @@
-.nav-title{
-    color: white;
-    background-color: black;
-    font-family: Arial Black;
-    
-}
+
 
 .nav-container{
     position: relative;
+    margin-top: 300;
 }

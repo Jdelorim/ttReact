@@ -1,36 +1,44 @@
 .p5-container canvas{
-
     top: 0;
-   
     font-family: Arial Black;
-     
-   
+    border-bottom: 2px solid white;
 }
-.p5-menu{
+
+.p5-menu {
     font-family: Arial Black;  
     display: inline; 
-    
-   
 }
+
 .p5-title {
-    font-size: 30px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    font-size: 50px;
+    color: rgb(226, 223, 223);
+    
     z-index: 1;
-    padding: 0.6em;
-    padding-top: 34px;
-    border-bottom: 1px solid white;
+    margin-left: 40px;
+    
 }
+
 .p5-menu-holder{
-    margin-left: 8em;
+    margin-top:-10px;
+    padding-left: 10px;
 }
+
 .p5-menu-holder li{
     display: inline;
-    padding: 0.5em;
-    color: white;
+    padding-right: 1em;
+    font-size: 20px;
+    color: rgb(226, 223, 223);
+    cursor: pointer;
+  
 }
 
 .p5-menu li:hover {
     color: grey;
 }
 
+.fps{
+    color: white;
+    font-size: 20px;
+    margin-top: 0px;
+}
