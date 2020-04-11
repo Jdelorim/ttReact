@@ -36,7 +36,7 @@ class P5Grid extends React.Component {
     
         p.setup = () => {
             
-            myCanvas = p.createCanvas(p.windowWidth, 110, p.WEBGL);
+            myCanvas = p.createCanvas(window.innerWidth, 110, p.WEBGL);
             time = 0; 
             size = 20;
             for(let i=1;i<p.width;i+=size) {
