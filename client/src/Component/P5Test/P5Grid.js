@@ -16,9 +16,9 @@ class P5Grid extends React.Component {
         
     }
 
-    componentDidUpdate() {
-        this.myP5 = new p5(this.Sketch, this.myRef.current)
-    }
+    // componentDidUpdate() {
+    //     this.myP5 = new p5(this.Sketch, this.myRef.current)
+    // }
 
   
     Sketch = (p) => {
@@ -77,9 +77,15 @@ class P5Grid extends React.Component {
             p.background(0);
             p.translate(-p.width/2,-p.height/2,0);
             
-            let px = p.map(p.noise(time*0.03),0,1,-p.width/2,p.width/2);
-            let ph = p.map(p.noise(time*0.04),0,1,0,100);
-            p.pointLight(255,0,0,px,ph,50);
+            let px = p.map(p.noise(time*0.03,50),0,1,-p.width/2,p.width/2);
+            let ph = p.map(p.noise(time*0.04,60),0,1,-120,120);
+            let px2 = p.map(p.noise(time*0.06,100),0,1,-p.width/2,p.width/2);
+            let ph2 = p.map(p.noise(time*0.07,80),0,1,-120,120);
+            let lightSize = p.map(p.sin(time*0.9),-1,1,15,60);
+            let lightSize2 = p.map(p.sin(time*.8),-1,1,5,80);
+            
+            p.pointLight(255,0,0,px,ph,lightSize);
+            p.pointLight(0,181,204,px2,ph2,lightSize);
            
            for(let i=1;i<p.width;i+=size) {
                 for(let j=1;j<p.height;j+=size) {
@@ -105,19 +111,7 @@ class P5Grid extends React.Component {
             time=time+1;
             
            
-             time2 = p.millis()/60;
-            let newTime = Math.round((time2 % 8)) + 1;
-            if(newTime === 8) {
-                console.log('HIT!')
-                playOsc(220);
-            } else if (newTime === 4) {
-                console.log('HIT AGAIN!')
-            } else {
-                //volDown();
-            }
-            // console.log(newTime);
          
-
         }
       
          const playOsc = (n) => {
@@ -135,8 +129,6 @@ class P5Grid extends React.Component {
            
         }
         
-     
-     
         const logKey = (e) => {
             console.log(`pressed ${e.code}`);
             playOsc((Math.random()*100)+60);
@@ -146,8 +138,8 @@ class P5Grid extends React.Component {
             osc.amp(0,1.0);
             console.log(osc.amp());
         }
-        document.addEventListener('keydown', logKey);
-         document.addEventListener('keyup',volDown );
+        // document.addEventListener('keydown', logKey);
+        //  document.addEventListener('keyup',volDown );
        
          p.windowResized=()=>{
             p.resizeCanvas(p.windowWidth, 200);

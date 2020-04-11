@@ -36,7 +36,8 @@ class P5Adsr extends React.Component {
         }
 
         const playSound = () => {
-            let maxLen = p.random(0.001, 2.0);
+            const notes = [60,61,62,63,64,65,66,67,68,69,70];
+            let maxLen = p.random(0.0001, 0.3);
             const types = ['sine', 'triangle', 'sawtooth', 'square'];
             console.log(types);
             let a = p.random(0.05, maxLen);
@@ -44,20 +45,22 @@ class P5Adsr extends React.Component {
             let s = p.random(0.1,0.5)+0.25;
             let r = p.random(0.01,maxLen);
             let rt = Math.round((p.random(1,4))-1);
-        //    console.log(rt);
+            let ranNote = Math.round(p.random(notes.length));
+          console.log(ranNote);
             timeLength = (a + d + r);
             
-            wave.setType(types[rt]); 
+            wave.setType(types[3]); 
             wave.start();
             
             modAmp.start();
             modAmp.disconnect();
             envAmp.setADSR(0.5, 0.5);
            
-            modAmp.freq(p.random(12,100),timeLength);
+            modAmp.freq(p.random(12,100),0.1);
            
             
-            wave.freq(p.random(220,440));
+            wave.freq(p.midiToFreq(notes[ranNote]));
+            console.log(wave.freq);
             wave.amp(modAmp,timeLength+0.2);
             
            
@@ -87,17 +90,13 @@ class P5Adsr extends React.Component {
 
             time = time + 1;
             // console.log(time);
-       
-       
-        p.mouseClicked =() =>{
-            playSound();
-        } 
+        }
 
-       
-
-       
+     p.mouseClicked = () =>{
+        playSound();
        
     }
+
     }
 
     render() {
