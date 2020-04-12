@@ -82,14 +82,21 @@ class Particle1 extends React.Component{
             })
             fps();
         }
-
-        p.mouseClicked =(e)=>{
+        p.touchStarted =(e)=>{
             console.log(e);
             newP.push(new jP());
             this.setState({
                 particleAmount: this.state.particleAmount + 1
             },()=>console.log(this.state.particleAmount))
         }
+
+        // p.mouseClicked =(e)=>{
+        //     console.log(e);
+        //     newP.push(new jP());
+        //     this.setState({
+        //         particleAmount: this.state.particleAmount + 1
+        //     },()=>console.log(this.state.particleAmount))
+        // }
 
         p.keyPressed = e => {
             newP.pop();
@@ -121,6 +128,8 @@ class Particle1 extends React.Component{
         },()=>console.log(this.state.distance));
     }
 
+  
+
     render() {
         return(
             <div className='jcontainer'>
@@ -130,8 +139,7 @@ class Particle1 extends React.Component{
                 <label style={{color: 'white'}}>Distance Length: {this.state.distance}</label>
                 <br/>
                 <input type='range' min='1' max='300' defaultValue='100' onChange={this.handleChange} name='distance'></input>  
-                
-                 <div ref={this.myRef}></div>
+                <div ref={this.myRef}></div>
             </div>
            
         )
