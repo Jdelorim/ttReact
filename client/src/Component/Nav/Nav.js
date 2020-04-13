@@ -1,7 +1,8 @@
 import React from 'react';
 // import P5Grid from '../P5Test/P5Grid';
 // import P5Adsr from '../P5Test/P5Adsr';
-import Particle1 from '../P5Test/ParticleTut/Particle1.js';
+// import Particle1 from '../P5Test/ParticleTut/Particle1.js';
+import MySketch from '../P5Test/LinkingP5Class/mySketch';
 import './Nav.css';
 
 class Nav extends React.Component{
@@ -13,7 +14,8 @@ class Nav extends React.Component{
         
         return(
             <div className='nav-container'>
-                <Particle1 />
+                <MySketch />
+                {/* <Particle1 /> */}
                 {/* <P5Grid /> */}
                  {/* <P5Adsr/>  */}
             </div>
