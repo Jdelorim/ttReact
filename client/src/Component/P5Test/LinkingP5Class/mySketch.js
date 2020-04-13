@@ -20,11 +20,23 @@ export default class MySketch extends React.Component{
 
     Sketch = p => {
         let holdClass = [];
-        let trigSound, isPlaying, time;
+        let trigSound, isPlaying, time, amount, distance;
         let simplex;
         p.setup = () => {
             p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
-            for(let i=0;i<100;i++) {
+            console.log(p.width);
+            if(p.width < 400) {
+                amount = 40;
+                distance = 60;
+                console.log('hiii');
+            } else if(p.width < 700){
+                amount = 60;
+                distance = 80;
+            }else{
+                amount = 100;
+                distance = 120;
+            }
+            for(let i=0;i<amount;i++) {
                 holdClass.push(new myClass(p));
             }
             isPlaying = false;
@@ -39,7 +51,7 @@ export default class MySketch extends React.Component{
             holdClass.forEach((i, index) => {
                 i.update(time);
                 i.display();
-                i.checkParticles(holdClass.slice(index), 120);
+                i.checkParticles(holdClass.slice(index), distance);
                 i.returnTrig();
             });
             // fps();
