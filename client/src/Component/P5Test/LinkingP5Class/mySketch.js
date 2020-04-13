@@ -23,8 +23,8 @@ export default class MySketch extends React.Component{
         let trigSound, isPlaying, time;
         let simplex;
         p.setup = () => {
-            p.createCanvas(p.windowWidth,p.windowHeight-4, p.P2D); 
-            for(let i=0;i<80;i++) {
+            p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
+            for(let i=0;i<100;i++) {
                 holdClass.push(new myClass(p));
             }
             isPlaying = false;
@@ -35,28 +35,30 @@ export default class MySketch extends React.Component{
         }
 
         p.draw = () => {
-            p.background(100);
+            p.background(0,0,0,20);
             holdClass.forEach((i, index) => {
                 i.update(time);
                 i.display();
                 i.checkParticles(holdClass.slice(index), 120);
                 i.returnTrig();
             });
-            fps();
+            // fps();
             time = time + 1;
+           
         }
       
         p.keyPressed = e => {
             // let r = Math.round(p.random(holdClass.length-1));
             // holdClass[r].playSound();
-            holdClass[0].playSample();
+            // holdClass[0].playSample();
+            fps();
         }
 
         const fps = () => {
             let f  = Math.round(p.frameRate());
             this.setState({
                 fps: f
-             });
+             },()=>console.log("FPS:",this.state.fps));
         }
       
 
@@ -68,7 +70,7 @@ export default class MySketch extends React.Component{
     render(){
         return(
             <div>
-            <div style={{color: 'white', position: 'absolute'}}>FPS: {this.state.fps}</div>
+            {/* <div style={{color: 'white', position: 'absolute'}}>FPS: {this.state.fps}</div> */}
             <div ref={this.myRef}></div>
             </div>
         )

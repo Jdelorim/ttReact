@@ -36,7 +36,7 @@ class P5Grid extends React.Component {
     
         p.setup = () => {
             
-            myCanvas = p.createCanvas(window.innerWidth, 110, p.WEBGL);
+            myCanvas = p.createCanvas(window.innerWidth-10, 110, p.WEBGL);
             time = 0; 
             size = 20;
             for(let i=1;i<p.width;i+=size) {
@@ -89,7 +89,7 @@ class P5Grid extends React.Component {
             
             // let lightSize2 = p.map(p.sin(time*0.5),-1,1,75,80);
             
-            p.pointLight(0,co,204,px,ph,60);
+            p.pointLight(255,255,255,px,ph,60);
             // p.pointLight(0,181,204,px2,ph2,lightSize2);
            
            for(let i=1;i<p.width;i+=size) {
@@ -112,12 +112,12 @@ class P5Grid extends React.Component {
             
             // console.log('px: ', px);
             time=time+1;
-            let jfps = Math.round(p.frameRate());
-            this.setState({
-                FPS: jfps
-            }
+            // let jfps = Math.round(p.frameRate());
+            // this.setState({
+            //     FPS: jfps
+            // }
             // ,()=>console.log('FPS:', this.state.FPS)
-            )
+           // )
         
         }
       
@@ -149,7 +149,7 @@ class P5Grid extends React.Component {
         //  document.addEventListener('keyup',volDown );
        
          p.windowResized=()=>{
-            p.resizeCanvas(p.windowWidth, p.height);
+            p.resizeCanvas(p.windowWidth-10, p.height);
             for(let i=1;i<p.width;i+=size) {
                 for(let j=1;j<p.height;j+=size) {
                     let mix = p.map(j*i,0,p.width,0,255);
@@ -184,10 +184,10 @@ class P5Grid extends React.Component {
                     </ul>
                 </div>
                 </div>
-            <div className='fps'>
+            {/* <div className='fps'>
               <div>FPS: {this.state.FPS}</div> 
               <div>Width: {this.state.Width}</div>
-            </div>
+            </div> */}
            </>
         )
     }

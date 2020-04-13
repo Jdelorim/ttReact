@@ -11,11 +11,13 @@ export default class myClass {
         this.r1 = p.random(-1, 1);
         this.r2 = p.random(-1, 1);
         this.r3 = p.random(1,1000);
+        this.r4 = p.random(1,5);
         this.rsound = p.random(30,70);
         this.ramp = p.random(0.001,0.1);
         this.ra = p.random(0.001,0.5);
         this.rd = p.random(0.001,0.5);
         this.rr = p.random(0.001,0.5);
+
         this.rTime = p.random(0.0001,0.003)
         this.sine1 = new p5.Oscillator('sine');
         this.env = new p5.Envelope();
@@ -29,11 +31,13 @@ export default class myClass {
     } 
 
     update = (time) => {
-
-       let x1 = this.p.map(this.simplex.noise2D(time*this.rTime,this.r3),-1,1,0,this.p.width);
-       let y1 = this.p.map(this.simplex.noise2D(time*this.rTime+0.0001,this.r3+this.r2),-1,1,0, this.p.height);
+        let speed = this.p.map(this.simplex.noise2D(this.r3,time*0.0001),-1,1,0,1);
+        // console.log(speed);
+       let x1 = this.p.map(this.simplex.noise2D((time*this.rTime)*speed,this.r3),-1,1,0,this.p.width);
+       let y1 = this.p.map(this.simplex.noise2D((time*this.rTime+0.0001)*speed,this.r3+this.r2),-1,1,0, this.p.height);
         this.pos.x = x1;
         this.pos.y = y1;
+        
     //    this.edges();
        //console.log(x1,y1);
        
@@ -49,63 +53,56 @@ export default class myClass {
     //         this.sine1.stop();
     //     }
     // }
-    playSample = () => {
-        if(this.sample.isLoaded()){
-        if(!this.sample.isPlaying()) {
-       this.sample.play();
-       this.sample.playMode('sustain');
-        } else {
-            this.sample.stop();
-        }
-    }
-    }
-    playSound = (trig) => {
+    // playSample = () => {
+    //     if(this.sample.isLoaded()){
+    //     if(!this.sample.isPlaying()) {
+    //    this.sample.play();
+    //    this.sample.playMode('sustain');
+    //     } else {
+    //         this.sample.stop();
+    //     }
+    // }
+    // }
+    // playSound = (trig) => {
         
-        if(trig === true) {
+    //     if(trig === true) {
            
-                this.sine1.start();
-                this.sine1.amp(0);
-                this.sine1.freq(this.p.midiToFreq(this.rsound));
-                this.env.setADSR(this.ra,this.rd,0.01,this.rr);
-                this.env.play(this.sine1);
-                trig = false;
+    //             this.sine1.start();
+    //             this.sine1.amp(0);
+    //             this.sine1.freq(this.p.midiToFreq(this.rsound));
+    //             this.env.setADSR(this.ra,this.rd,0.01,this.rr);
+    //             this.env.play(this.sine1);
+    //             trig = false;
            
           
            
-        } else {
-            this.sine1.amp(0);
-            this.sine1.stop();
-            trig=false;
-            this.isPlaying = false;
-        }
+    //     } else {
+    //         this.sine1.amp(0);
+    //         this.sine1.stop();
+    //         trig=false;
+    //         this.isPlaying = false;
+    //     }
           
           
-    }
+    // }
     
     display = () => {
         this.p.noStroke();
-        this.p.fill(this.changeFill);
-        this.p.circle(this.pos.x, this.pos.y, this.size);
+        this.p.fill(255);
+        //this.p.circle(this.pos.x, this.pos.y, this.size);
     };
     
 
     checkParticles = (particles, distance) => {
-        
+        this.p.stroke(255);
         particles.forEach((particle) => {
             const d = this.p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
             
             if (d < distance) {
                 
-                this.changeFill = 'rgba(255,0,0,1)';
-                this.p.stroke(255,0,0);
+                this.p.strokeWeight(this.r4);
                 this.p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-              
-            } else {
-                this.changeFill = 'rgba(255,255,255,1)';
-                this.switchme=false;
-                this.p.stroke(0,255,0);
-                
-            }
+            } 
         });
         
     };
