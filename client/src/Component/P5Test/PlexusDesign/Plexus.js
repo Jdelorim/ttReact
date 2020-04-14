@@ -27,7 +27,7 @@ export default class Plexus extends React.Component{
     Sketch = p => {
         const holdClass = [];
         let time, amount, simplex, mic;
-        let can, t;
+        let can, t, f;
         
         p.setup = () => {
           can = p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
@@ -52,10 +52,18 @@ export default class Plexus extends React.Component{
         
             time = 0;
             console.log('starting mic in: ', this.state.micIn );
+            t=true;
+            f=true;
         }
 
         p.draw = () => {
-            p.background(0,0,0,20);
+            if(f) {
+                p.background(0,0,0,50);
+            } else {
+                p.background(0,0,0,10);
+            }
+            
+            
             let {hue, sat, lum, micIn, distLength, baseSpeed} = this.state;
             let micAmp = mic.getLevel();
             holdClass.forEach((i, index) => {
@@ -65,17 +73,6 @@ export default class Plexus extends React.Component{
             time = time + (baseSpeed*0.1) + (micAmp * micIn);
            
             fps();
-          
-        }
-      
-        p.keyPressed = e => {
-         //console.log(e);
-         
-            if(e.key === ' ') {
-               t = !t;
-               console.log(t);
-            }
-
             if(t) {
                 this.setState({
                     myDisplay: 'inline'
@@ -85,9 +82,29 @@ export default class Plexus extends React.Component{
                     myDisplay: 'none'
                 })
             }
+          
+        }
+      
+        p.keyPressed = e => {
+         console.log(e);
+         
+            if(e.key === ' ') {
+               t = !t;
+               console.log(t);
+            }
+
+            if(e.key === 'f') {
+                f = !f;
+                console.log(f);
+             }
+
+           
             
         }
+        const background = () => {
+            
 
+        }
      
         
         const fps = () => {
@@ -145,6 +162,8 @@ export default class Plexus extends React.Component{
             <br/>
             <input type='range' min='0' max='100' defaultValue={this.state.lum} onChange={this.handleChange} name='lum'></input>
             <br/>
+            <div style={{color: 'white', fontSize: '10px'}}>Press 'F' key to toggle Feedback</div>
+            <div style={{color: 'white', fontSize: '10px'}}>Press 'SPACEBAR' to toggle Controls</div>
             </div>
             <div ref={this.myRef}></div>
             </>

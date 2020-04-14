@@ -4,7 +4,6 @@ import React from 'react';
 //  import Particle1 from '../P5Test/ParticleTut/Particle1.js';
  import Plexus from '../P5Test/PlexusDesign/Plexus';
 // import P5Template from '../P5Template/P5Template';
-
 import './Nav.css';
 
 class Nav extends React.Component{
