@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import SimplexNoise from "simplex-noise/simplex-noise";
 
-export default class myClass {
+export default class PlexusClass {
    
     constructor(p) {
         this.p = p;
@@ -11,7 +11,7 @@ export default class myClass {
         this.r1 = p.random(-1, 1);
         this.r2 = p.random(-1, 1);
         this.r3 = p.random(1,1000);
-        this.r4 = p.random(1,5);
+        this.r4 = p.random(100,255);
         this.rsound = p.random(30,70);
         this.ramp = p.random(0.001,0.1);
         this.ra = p.random(0.001,0.5);
@@ -27,20 +27,44 @@ export default class myClass {
         this.isPlaying = false;
         this.sample = p.loadSound('/sounds/Kick01.wav');
         this.simplex = new SimplexNoise('seed'); 
+        this.speed = 0.0001;
        
     } 
 
     update = (time) => {
-        let speed = this.p.map(this.simplex.noise2D(this.r3,time*0.0001),-1,1,0,1);
+       // this.p.stroke(this.p.map(this.p.sin(time,100),-1,1,0,255));
+      // console.log('in class', micAmp);
+        // let speed = this.p.map(this.simplex.noise2D(this.r3,time*0.0001),-1,1,0,1);
         // console.log(speed);
-       let x1 = this.p.map(this.simplex.noise2D((time*this.rTime)*speed,this.r3),-1,1,0,this.p.width);
-       let y1 = this.p.map(this.simplex.noise2D((time*this.rTime+0.0001)*speed,this.r3+this.r2),-1,1,0, this.p.height);
+        let x1 = this.p.map(this.simplex.noise2D((time*this.rTime),this.r3),-1,1,0,this.p.width);
+        let y1 = this.p.map(this.simplex.noise2D((time*this.rTime+0.0001),this.r3+this.r2),-1,1,0, this.p.height);
         this.pos.x = x1;
         this.pos.y = y1;
-        
-    //    this.edges();
+        //this.edges();
        //console.log(x1,y1);
        
+    };
+    display = () => {
+        this.p.noStroke();
+        this.p.fill(255);
+       
+        //this.p.circle(this.pos.x, this.pos.y, this.size);
+    };
+    
+
+    checkParticles = (particles, distance) => {
+        this.p.stroke(255,255,255,this.r4);
+        this.p.strokeWeight(1);
+        particles.forEach((particle) => {
+            const d = this.p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+            
+            if (d < distance) {
+                
+                
+                this.p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+            } 
+        });
+        
     };
     // playDrone = (ps) => {
     //    if(!ps) {
@@ -86,30 +110,11 @@ export default class myClass {
           
     // }
     
-    display = () => {
-        this.p.noStroke();
-        this.p.fill(255);
-        //this.p.circle(this.pos.x, this.pos.y, this.size);
-    };
-    
-
-    checkParticles = (particles, distance) => {
-        this.p.stroke(255);
-        particles.forEach((particle) => {
-            const d = this.p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-            
-            if (d < distance) {
-                
-                this.p.strokeWeight(this.r4);
-                this.p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-            } 
-        });
+  
+    // returnTrig = () => {
+    //     return this.switchme;
         
-    };
-    returnTrig = () => {
-        return this.switchme;
-        
-    }
+    // }
 
     // trigSound = () => {
     //    this.sine1.amp(0);
@@ -129,15 +134,15 @@ export default class myClass {
     // }
 
         
-            edges = () => {
+        //     edges = () => {
                    
-            if (this.pos.x < 0 || this.pos.x > this.p.width) {
-                this.vel.x *= -1;
-            }
-            if (this.pos.y < 0 || this.pos.y > this.p.height) {
-                this.vel.y *= -1;
-            }
-         };
+        //     if (this.pos.x < 0 || this.pos.x > this.p.width) {
+        //         this.vel.x *= -1;
+        //     }
+        //     if (this.pos.y < 0 || this.pos.y > this.p.height) {
+        //         this.vel.y *= -1;
+        //     }
+        //  };
 
 
 }

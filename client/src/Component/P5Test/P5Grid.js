@@ -4,7 +4,6 @@ import "p5/lib/addons/p5.sound";
 import './P5test.css';
 // import { makeNoise2D } from 'open-simplex-noise';
 //use correct version of p5 0.10.2
-
 class P5Grid extends React.Component {
     constructor(props) {
         super(props)
@@ -21,12 +20,8 @@ class P5Grid extends React.Component {
         
     }
 
-  
-
-  
     Sketch = (p) => {
-       
-        let time, size;
+       let time, size;
         let fcolor = [];
         var myCanvas;
         // let osc,osc2, rev;
@@ -35,7 +30,6 @@ class P5Grid extends React.Component {
         //---------------Setup--------------------------
     
         p.setup = () => {
-            
             myCanvas = p.createCanvas(window.innerWidth-10, 110, p.WEBGL);
             time = 0; 
             size = 20;
@@ -56,27 +50,16 @@ class P5Grid extends React.Component {
             this.setState({
                 Width: p.width
             })
-
             // startA = false;
-          
-
             // osc.amp(0,0.5);
             // osc.start();
             // rev.drywet(90);
             // rev.process(osc,3,2);
-
-            
             // osc = new p5.Oscillator('sawtooth');
             // osc2 = new p5.Oscillator('sine');
             // rev = new p5.Reverb();
-
-           
-
         }
         //osc
-
-     
-
         //----------------DRAW------------------------
         p.draw = () =>{
             p.background(0);
@@ -84,11 +67,9 @@ class P5Grid extends React.Component {
             
             let px = p.map(p.noise(time*0.03),0,1,-p.width/2,p.width/2);
             let ph = p.map(p.noise(time*0.04),0,1,-p.height/2,p.height/2);
-             let co = p.map(p.noise(time*0.02),0,1,100,181);
+            let co = p.map(p.noise(time*0.02),0,1,100,181);
             // let ph2 = p.map(p.noise(time*0.07,80),0,1,-120,120);
-            
             // let lightSize2 = p.map(p.sin(time*0.5),-1,1,75,80);
-            
             p.pointLight(255,255,255,px,ph,60);
             // p.pointLight(0,181,204,px2,ph2,lightSize2);
            
@@ -105,7 +86,6 @@ class P5Grid extends React.Component {
                     }
                     p.fill(fcolor[ii]);
                     p.rect(x,y,ssize-5,ssize-5);
-                    
                 }
             }
          
