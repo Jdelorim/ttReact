@@ -17,6 +17,7 @@ export default class Plexus extends React.Component{
         hue: 100,
         sat: 0,
         lum: 100,
+        lineWidth: 1,
         myDisplay: 'none'
        
     }
@@ -27,10 +28,10 @@ export default class Plexus extends React.Component{
     Sketch = p => {
         const holdClass = [];
         let time, amount, simplex, mic;
-        let can, t, f;
+        let t, f;
         
         p.setup = () => {
-          can = p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
+         p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
           p.colorMode(p.HSB, 100);
             console.log(p.width);
             if(p.width < 400) {
@@ -60,19 +61,19 @@ export default class Plexus extends React.Component{
             if(f) {
                 p.background(0,0,0,50);
             } else {
-                p.background(0,0,0,10);
+                p.background(0,0,0,20);
             }
             
-            
-            let {hue, sat, lum, micIn, distLength, baseSpeed} = this.state;
+            let {hue, sat, lum, micIn, distLength, baseSpeed, lineWidth} = this.state;
             let micAmp = mic.getLevel();
             holdClass.forEach((i, index) => {
                 i.update(time, simplex);
-                i.checkParticles(holdClass.slice(index), distLength, hue, sat, lum);
+                i.checkParticles(holdClass.slice(index), distLength, hue, sat, lum, lineWidth);
             });
             time = time + (baseSpeed*0.1) + (micAmp * micIn);
            
             fps();
+
             if(t) {
                 this.setState({
                     myDisplay: 'inline'
@@ -82,7 +83,6 @@ export default class Plexus extends React.Component{
                     myDisplay: 'none'
                 })
             }
-          
         }
       
         p.keyPressed = e => {
@@ -97,15 +97,7 @@ export default class Plexus extends React.Component{
                 f = !f;
                 console.log(f);
              }
-
-           
-            
         }
-        const background = () => {
-            
-
-        }
-     
         
         const fps = () => {
             let f  = Math.round(p.frameRate());
@@ -149,6 +141,10 @@ export default class Plexus extends React.Component{
             <label style={{color: 'white'}}>Speed: {this.state.baseSpeed}</label>
             <br/>
             <input type='range' min='1' max='30' defaultValue='1' onChange={this.handleChange} name='baseSpeed'></input>
+            <br/>
+            <label style={{color: 'white'}}>Line Width: {this.state.lineWidth}</label>
+            <br/>
+            <input type='range' min='1' max='20' defaultValue='1' onChange={this.handleChange} name='lineWidth'></input>
             <br/>
             <label style={{color: 'white'}}>Hue: {this.state.hue}</label>
             <br/>

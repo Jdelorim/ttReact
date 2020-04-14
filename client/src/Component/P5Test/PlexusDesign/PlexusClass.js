@@ -56,10 +56,10 @@ export default class PlexusClass {
     // };
     
 
-    checkParticles = (particles, distance, hue, sat, lum) => {
-    
+    checkParticles = (particles, distance, hue, sat, lum, lineWidth) => {
+        
         this.p.stroke(hue, sat, lum);
-        this.p.strokeWeight(1);
+        this.p.strokeWeight(lineWidth);
         particles.forEach((particle) => {
             const d = this.p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
             if (d < distance) {
