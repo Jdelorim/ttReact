@@ -78,6 +78,12 @@ export default class Plexus extends React.Component{
             this.setState({
                 fps: f
              });
+             
+        }
+
+        p.mousePressed = () => {
+            p.userStartAudio();
+            console.log('is pressed');
         }
       
 
