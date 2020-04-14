@@ -48,6 +48,7 @@ export default class Plexus extends React.Component{
             mic.start();
         
             time = 0;
+            console.log('starting mic in: ', this.state.micIn );
         }
 
         p.draw = () => {
@@ -81,7 +82,7 @@ export default class Plexus extends React.Component{
              
         }
 
-        p.mousePressed = () => {
+        p.touchStarted = () => {
             p.userStartAudio();
             console.log('is pressed');
         }
