@@ -2,10 +2,8 @@ import React from 'react';
 
 import p5 from 'p5';
 import "p5/lib/addons/p5.sound";
-// import SimplexNoise from "simplex-noise/simplex-noise";
+import SimplexNoise from "simplex-noise/simplex-noise";
 import PlexusClass from './PlexusClass';
-
-
 export default class Plexus extends React.Component{
     constructor(props){
         super(props)
@@ -15,6 +13,11 @@ export default class Plexus extends React.Component{
         fps: 0,
         distLength: 100,
         micIn: 10,
+        baseSpeed: 1,
+        hue: 100,
+        sat: 0,
+        lum: 100,
+        myDisplay: 'none'
        
     }
     componentDidMount() {
@@ -22,30 +25,30 @@ export default class Plexus extends React.Component{
     }
 
     Sketch = p => {
-        let holdClass = [];
-        let time, amount;
-        let mic;
+        const holdClass = [];
+        let time, amount, simplex, mic;
+        let can, t;
         
         p.setup = () => {
-          p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
+          can = p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
+          p.colorMode(p.HSB, 100);
             console.log(p.width);
             if(p.width < 400) {
                 amount = 40;
-               
-                console.log('hiii');
             } else if(p.width < 700){
                 amount = 60;
-             
-            }else{
+            }else {
                 amount = 100;
-               
             }
+            
             for(let i=0;i<amount;i++) {
                 holdClass.push(new PlexusClass(p));
             }
-           
+            
             mic = new p5.AudioIn();
             mic.start();
+
+            simplex = new SimplexNoise('seed');
         
             time = 0;
             console.log('starting mic in: ', this.state.micIn );
@@ -53,27 +56,40 @@ export default class Plexus extends React.Component{
 
         p.draw = () => {
             p.background(0,0,0,20);
+            let {hue, sat, lum, micIn, distLength, baseSpeed} = this.state;
             let micAmp = mic.getLevel();
-          
             holdClass.forEach((i, index) => {
-               i.update(time);
-                i.display();
-                i.checkParticles(holdClass.slice(index), this.state.distLength, time);
+                i.update(time, simplex);
+                i.checkParticles(holdClass.slice(index), distLength, hue, sat, lum);
             });
-             
-            time = time + 0.0001 + (micAmp * this.state.micIn);
+            time = time + (baseSpeed*0.1) + (micAmp * micIn);
            
             fps();
-            // this.setState({
-            //     distLength: distance,
-            //     micIn: intensity
-            // })
+          
         }
       
         p.keyPressed = e => {
-            fps();
+         //console.log(e);
+         
+            if(e.key === ' ') {
+               t = !t;
+               console.log(t);
+            }
+
+            if(t) {
+                this.setState({
+                    myDisplay: 'inline'
+                })
+            } else {
+                this.setState({
+                    myDisplay: 'none'
+                })
+            }
+            
         }
 
+     
+        
         const fps = () => {
             let f  = Math.round(p.frameRate());
             this.setState({
@@ -84,7 +100,7 @@ export default class Plexus extends React.Component{
 
         p.touchStarted = () => {
             p.userStartAudio();
-            console.log('is pressed');
+            // console.log('is pressed');
         }
       
 
@@ -100,8 +116,10 @@ export default class Plexus extends React.Component{
     }
 
     render(){
+       
         return(
-            <div style={{position: 'absolute', display: 'inline',  marginLeft: '20px', marginTop: '10px', fontSize: '10px'}}>
+            <>
+            <div style={{position: 'absolute', display: this.state.myDisplay,  marginLeft: '20px', marginTop: '10px', fontSize: '10px'}}>
             <div style={{color: 'white'}}>FPS: {this.state.fps}</div>
             <label style={{color: 'white'}}>Distance Length: {this.state.distance}</label>
             <br/>
@@ -111,9 +129,25 @@ export default class Plexus extends React.Component{
             <br/>
             <input type='range' min='1' max='30' defaultValue='10' onChange={this.handleChange} name='micIn'></input>
             <br/>
-           
-            <div ref={this.myRef}></div>
+            <label style={{color: 'white'}}>Speed: {this.state.baseSpeed}</label>
+            <br/>
+            <input type='range' min='1' max='30' defaultValue='1' onChange={this.handleChange} name='baseSpeed'></input>
+            <br/>
+            <label style={{color: 'white'}}>Hue: {this.state.hue}</label>
+            <br/>
+            <input type='range' min='0' max='100' defaultValue={this.state.hue} onChange={this.handleChange} name='hue'></input>
+            <br/>
+            <label style={{color: 'white'}}>Saturation: {this.state.sat}</label>
+            <br/>
+            <input type='range' min='0' max='100' defaultValue={this.state.sat} onChange={this.handleChange} name='sat'></input>
+            <br/>
+            <label style={{color: 'white'}}>Luminosity: {this.state.lum}</label>
+            <br/>
+            <input type='range' min='0' max='100' defaultValue={this.state.lum} onChange={this.handleChange} name='lum'></input>
+            <br/>
             </div>
+            <div ref={this.myRef}></div>
+            </>
         )
     }
 }
