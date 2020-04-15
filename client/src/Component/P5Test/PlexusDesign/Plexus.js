@@ -31,7 +31,7 @@ export default class Plexus extends React.Component{
         let t, f;
         
         p.setup = () => {
-         p.createCanvas(p.windowWidth,p.windowHeight-130, p.P2D); 
+         p.createCanvas(p.windowWidth-10,p.windowHeight-10, p.P2D); 
           p.colorMode(p.HSB, 100);
             console.log(p.width);
             if(p.width < 400) {
@@ -90,6 +90,7 @@ export default class Plexus extends React.Component{
          
             if(e.key === ' ') {
                t = !t;
+            //    p.fullscreen(true);
                console.log(t);
             }
 
@@ -114,7 +115,7 @@ export default class Plexus extends React.Component{
       
 
         p.windowResized = () => {
-            p.resizeCanvas(p.windowWidth, p.windowHeight);
+            p.resizeCanvas(p.windowWidth-5, p.windowHeight-5);
         }
     }
 
