@@ -46,15 +46,21 @@ export default class MachineBleeds extends React.Component{
              );
         }
         p.windowResized = () => {
-            p.resizeCanvas(p.windowWidth, p.windowHeight);
+            p.resizeCanvas(p.windowWidth, p.windowHeight-8);
         }
     }
 
     render(){
         return (
             <>
-              <div style={{color: 'white', display: 'relative'}}>FPS: {this.state.fps}</div>
+              <div style={{position: 'absolute',  marginLeft: '20px', marginTop: '10px',fontFamily:'arial black', fontSize: '10px', color: 'white'}}>
+              <div>FPS: {this.state.fps}</div>
+              <div style={{marginTop: '300px', fontSize: '10em', color: 'rgba(255,255,255,0.9)'}}>TRASHTRASH
+              <div style={{fontSize: '0.5em'}}>coming soon</div>
+              </div>
+              </div>
               <div ref={this.myRef}></div>
+              
             </>
         )
     }
