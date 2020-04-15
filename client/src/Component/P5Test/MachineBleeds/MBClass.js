@@ -31,7 +31,7 @@ export default class MBClass {
     display = (time) => {
         let {width, height, map} = this.p;
         
-        let dist = 100;
+        let dist = 120;
         let x = width * .25;
         let speed = 0.01;
 

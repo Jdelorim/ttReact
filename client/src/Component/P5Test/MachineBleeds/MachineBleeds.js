@@ -29,7 +29,7 @@ export default class MachineBleeds extends React.Component{
             time = 0;
         }
         p.draw = () => {
-            p.background(0,0,0,25);
+            p.background(0,0,0,10);
             
             MB.display(time);
           
@@ -55,8 +55,8 @@ export default class MachineBleeds extends React.Component{
             <>
               <div style={{position: 'absolute',  marginLeft: '20px', marginTop: '10px',fontFamily:'arial black', fontSize: '10px', color: 'white'}}>
               <div>FPS: {this.state.fps}</div>
-              <div style={{marginTop: '300px', fontSize: '10em', color: 'rgba(255,255,255,0.9)'}}>TRASHTRASH
-              <div style={{fontSize: '0.5em'}}>coming soon</div>
+              <div style={{marginTop: '300px', fontSize: '10em', color: 'rgba(255,255,255,0.9)', letterSpacing:'-9.0px'}}>TRASHTRASH
+              <div style={{fontSize: '0.5em', letterSpacing:'5px', textAlign: 'center'}}>coming soon</div>
               </div>
               </div>
               <div ref={this.myRef}></div>
