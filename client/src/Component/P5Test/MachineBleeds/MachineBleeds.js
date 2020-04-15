@@ -20,17 +20,22 @@ export default class MachineBleeds extends React.Component{
 
     Sketch = p => {
         let MB, time;
+       
         p.setup = () => {
             p.createCanvas(p.windowWidth, p.windowHeight, p.P2D);
             MB = new MBClass(p);
+            // MB.setup();
+            p.colorMode(p.HSB, 100);
+            time = 0;
         }
         p.draw = () => {
-            p.background(0);
-            ++time;
-            // MB.display(time);
-            MB.mb(time);
+            p.background(0,0,0,25);
+            
+            MB.display(time);
+          
             fps();
             
+            ++time;
         }
         const fps = () => {
             let f  = Math.round(p.frameRate());
@@ -48,10 +53,8 @@ export default class MachineBleeds extends React.Component{
     render(){
         return (
             <>
-              
-                <div style={{color: 'white'}}>FPS: {this.state.fps}</div>
-                <div ref={this.myRef}></div>
-                
+              <div style={{color: 'white', display: 'relative'}}>FPS: {this.state.fps}</div>
+              <div ref={this.myRef}></div>
             </>
         )
     }
