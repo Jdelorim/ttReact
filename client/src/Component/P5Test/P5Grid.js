@@ -30,7 +30,7 @@ class P5Grid extends React.Component {
         //---------------Setup--------------------------
     
         p.setup = () => {
-            myCanvas = p.createCanvas(window.innerWidth-10, 110, p.WEBGL);
+            myCanvas = p.createCanvas(window.innerWidth-10, 110, p.P2D);
             time = 0; 
             size = 20;
             for(let i=1;i<p.width;i+=size) {
@@ -70,7 +70,7 @@ class P5Grid extends React.Component {
             let co = p.map(p.noise(time*0.02),0,1,100,181);
             // let ph2 = p.map(p.noise(time*0.07,80),0,1,-120,120);
             // let lightSize2 = p.map(p.sin(time*0.5),-1,1,75,80);
-            p.pointLight(255,255,255,px,ph,60);
+            // p.pointLight(255,255,255,px,ph,60);
             // p.pointLight(0,181,204,px2,ph2,lightSize2);
            
            for(let i=1;i<p.width;i+=size) {
@@ -148,27 +148,7 @@ class P5Grid extends React.Component {
    
     render(){
         return (
-            <>
-            <div className='p5-container' ref={this.myRef}>
-            </div>
-                 <div className='p5-menu'>
-                <div className='p5-title'>
-                    TRASHTRASH
-                </div>    
-                <div className='p5-menu-holder'>
-                    <ul>
-                        <li>BIO</li>
-                        <li>WORKS</li>
-                        <li>BLOG</li>
-                        <li>CONTACT</li>
-                    </ul>
-                </div>
-                </div>
-            {/* <div className='fps'>
-              <div>FPS: {this.state.FPS}</div> 
-              <div>Width: {this.state.Width}</div>
-            </div> */}
-           </>
+            <div className='nav-canvas' ref={this.myRef}></div>
         )
     }
    

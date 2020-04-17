@@ -13,7 +13,7 @@ export default class MBClass {
         this.ran4 = p.random(3,10);
         this.y = [];
         this.time = 0;
-        this.amount = 20;
+        this.amount = 10;
         this.noiseAmount = 100;
         this.speed = 0.01;
         this.vec = p.createVector(0,0,0);
@@ -28,16 +28,16 @@ export default class MBClass {
     //     }
     // }   
 
-    display = (time) => {
+    display = (time, offscreen) => {
         let {width, height, map} = this.p;
-        
-        let dist = 120;
-        let x = width * .25;
-        let speed = 0.01;
+        let {stroke, strokeWeight, line} = this.p;
+        let dist = 100;
+        let x = offscreen.width * .25;
+        let speed = 0.012;
 
         for (let i =0;i<this.amount; i++){
 
-        let p = map(i, 0,this.amount,0, height);
+        let p = map(i, 0,this.amount,0, offscreen.height);
         this.y.push(p);
 
         let w = map(i,0,this.amount,1,2);
@@ -57,22 +57,22 @@ export default class MBClass {
 
         // this.p.stroke(c+this.toffset[i],s+this.toffset[i], s);
        let hue = map(this.p.sin(time*(speed*4)+(this.toffset[i]*2)), -1,1,10,100);
-        this.p.stroke(hue, 100, 100);
+        offscreen.stroke(100, 100, 100);
         
         let sw1 = map(i,0,this.amount,3,20);
         let sw2 = map(i,0,this.amount,20,3);
         let sw = map(i,0,this.amount, sw1,sw2);
-        this.p.strokeWeight(sw);
+        offscreen.strokeWeight(3);
         
-        this.p.line(0, this.y[i], x+n1y, this.y[i]+n1x);
-        this.p.line(x+n1y, this.y[i]+n1x, x*2+n2y, this.y[i]+n2x);
-        this.p.line(x*2+n2y, this.y[i]+n2x, x*3+n3y, this.y[i]+n3x);
-        this.p.line(x*3+n3y, this.y[i]+n3x, x*4, this.y[i]);
-        if( this.y[i] > height) {
+        offscreen.line(0, this.y[i], x+n1y, this.y[i]+n1x);
+        offscreen.line(x+n1y, this.y[i]+n1x, x*2+n2y, this.y[i]+n2x);
+        offscreen.line(x*2+n2y, this.y[i]+n2x, x*3+n3y, this.y[i]+n3x);
+        offscreen.line(x*3+n3y, this.y[i]+n3x, x*4, this.y[i]);
+        if( this.y[i] > offscreen.height) {
             this.y[i] = 0;
             // this.toffset[i] = 1;
         } else {
-            ++this.y[i];
+            this.y[i]+=4;
         }
      }
     }

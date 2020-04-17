@@ -19,23 +19,30 @@ export default class MachineBleeds extends React.Component{
     }
 
     Sketch = p => {
-        let MB, time;
+        let MB, time, offscreen;
        
         p.setup = () => {
-            p.createCanvas(p.windowWidth, p.windowHeight, p.P2D);
+            p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
             MB = new MBClass(p);
-            // MB.setup();
+            p.smooth();
             p.colorMode(p.HSB, 100);
             time = 0;
+            offscreen = p.createGraphics(400, 400, p.P2D);
         }
         p.draw = () => {
-            p.background(0,0,0,10);
+            p.background(100,0,0,10);
+            offscreen.background(0);
+            MB.display(time, offscreen);
+            p.directionalLight(100, 0, 100, -10, 0, -100);
+            p.rotateX(time *.001);
+            p.rotateY(time *.01);
+            p.rotateZ(time *.02);
             
-            MB.display(time);
-          
+            p.texture(offscreen);
+            p.box(400,400,400);
             fps();
-            
-            ++time;
+        
+             ++time;
         }
         const fps = () => {
             let f  = Math.round(p.frameRate());

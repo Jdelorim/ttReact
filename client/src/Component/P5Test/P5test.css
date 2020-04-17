@@ -1,4 +1,4 @@
-.p5-container canvas{
+.nav-canvas{
     top: 0;
     font-family: Arial Black;
     border-bottom: 2px solid white;
@@ -9,7 +9,7 @@
     display: inline; 
 }
 
-.p5-title {
+/* .p5-title {
     top: 0;
     font-size: 50px;
     color: rgb(226, 223, 223);
@@ -17,8 +17,8 @@
     z-index: 1;
     margin-left: 40px;
     
-}
-
+} */
+/* 
 .p5-menu-holder{
     margin-top:-10px;
     padding-left: 10px;
@@ -41,4 +41,4 @@
     color: white;
     font-size: 20px;
     margin-top: 0px;
-}
+} */

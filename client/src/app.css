@@ -1,4 +1,16 @@
 body {
     margin: 0;
     background-color: black;
+    color: white;
+    font-family: arial black;
+}
+
+.main {
+    position: relative;
+    margin-top: 3em;
+
+}
+
+.bio {
+   
 }

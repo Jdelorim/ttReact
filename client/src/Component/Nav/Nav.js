@@ -1,10 +1,6 @@
 import React from 'react';
-// import P5Grid from '../P5Test/P5Grid';
-// import P5Adsr from '../P5Test/P5Adsr';
-//  import Particle1 from '../P5Test/ParticleTut/Particle1.js';
-//  import Plexus from '../P5Test/PlexusDesign/Plexus';
-import MachineBleeds from '../P5Test/MachineBleeds/MachineBleeds';
-// import P5Template from '../P5Template/P5Template';
+import Grid from './Grid1';
+import {Link} from 'react-router-dom';
 import './Nav.css';
 
 class Nav extends React.Component{
@@ -13,16 +9,33 @@ class Nav extends React.Component{
     }
   
     render(){
-        
         return(
             <div className='nav-container'>
-                {/* <P5Template /> */}
-                {/* <Particle1 /> */}
-                 {/* <P5Grid />  */}
-                {/* <Plexus />  */}
-                 {/* <P5Adsr/>  */}
-                 <MachineBleeds />
+               <Grid /> 
+                 <div className='p5-menu'>
+                <div className='p5-title'>
+                    <Link style={{color: 'white', textDecoration: 'none'}} to='/'>
+                        TRASHTRASH
+                    </Link>
+                </div>    
+                <div className='p5-menu-holder'>
+                    <ul>
+                        <Link style={{textDecoration: 'none'}} to='/bio'>
+                        <li>BIO</li>
+                        </Link>
+                        <Link style={{textDecoration: 'none'}}to='/works'>
+                        <li>WORKS</li>
+                        </Link>
+                        <Link style={{textDecoration: 'none'}}to='blog'>
+                        <li>BLOG</li>
+                        </Link>
+                        <Link style={{textDecoration: 'none'}}to='contact'>
+                        <li>CONTACT</li>
+                        </Link>
+                    </ul>
+                </div>
             </div>
+        </div>
         )
     }
 }

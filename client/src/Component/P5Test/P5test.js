@@ -25,24 +25,18 @@ class P5Test extends React.Component {
         }
 
         p.draw = () =>{
-            
             p.background(100);
             p.stroke(ranc);
             p.strokeWeight(time);
-
             drawLine(p.width/2-ranx, p.height/2, p.width/2+rany, p.height/2);
-            
             time=time+1;
             if(time > 100) {
                 time = 0;
                 ranc = p.random(50,255);
                 ranx = p.random(p.width);
                 rany = p.random(p.height);
-            } else {
-               
             }
-            console.log(time);
-
+            // console.log(time);
         }
 
        const drawLine = (x,y,x1,y1) => {
