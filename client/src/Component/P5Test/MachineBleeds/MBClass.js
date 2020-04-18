@@ -6,7 +6,7 @@ export default class MBClass {
     constructor(p) {
         this.p = p;
         this.moveY = [];
-        this.r1 = p.random(0.01);
+        // this.r1 = p.random(0.01);
         this.r2 = p.random(100);
         this.r3 = p.random(100);
         this.r4 = p.random(100);
@@ -29,8 +29,8 @@ export default class MBClass {
     // }   
 
     display = (time, offscreen) => {
-        let {width, height, map} = this.p;
-        let {stroke, strokeWeight, line} = this.p;
+        let {map} = this.p;
+        // let {stroke, strokeWeight, line} = this.p;
         let dist = 100;
         let x = offscreen.width * .25;
         let speed = 0.012;
@@ -42,10 +42,10 @@ export default class MBClass {
 
         let w = map(i,0,this.amount,1,2);
         let w1 = map(i,0,this.amount,2,1);
-        let c = map(this.p.sin(i*(time*0.01)*2),-1, 1,60,100);
+        // let c = map(this.p.sin(i*(time*0.01)*2),-1, 1,60,100);
         
         this.toffset[i] = map(i,0,this.amount, w,w1);
-        let s = map(i,0,this.amount,90,100);
+        // let s = map(i,0,this.amount,90,100);
         
 
         let n1x = map(this.simplex.noise2D(time*speed+this.toffset[i],this.r2), -1,1,-dist,dist);
@@ -56,12 +56,12 @@ export default class MBClass {
         let n3y = map(this.simplex.noise2D(time*speed+this.toffset[i],this.r3), -1,1,-dist,dist);
 
         // this.p.stroke(c+this.toffset[i],s+this.toffset[i], s);
-       let hue = map(this.p.sin(time*(speed*4)+(this.toffset[i]*2)), -1,1,10,100);
+    //    let hue = map(this.p.sin(time*(speed*4)+(this.toffset[i]*2)), -1,1,10,100);
         offscreen.stroke(100, 100, 100);
         
-        let sw1 = map(i,0,this.amount,3,20);
-        let sw2 = map(i,0,this.amount,20,3);
-        let sw = map(i,0,this.amount, sw1,sw2);
+        // let sw1 = map(i,0,this.amount,3,20);
+        // let sw2 = map(i,0,this.amount,20,3);
+        // let sw = map(i,0,this.amount, sw1,sw2);
         offscreen.strokeWeight(3);
         
         offscreen.line(0, this.y[i], x+n1y, this.y[i]+n1x);

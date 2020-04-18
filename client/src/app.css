@@ -8,9 +8,13 @@ body {
 .main {
     position: relative;
     margin-top: 3em;
-
 }
 
 .bio {
    
+}
+
+@media only screen and (max-width: 500px) {
+    
+
 }

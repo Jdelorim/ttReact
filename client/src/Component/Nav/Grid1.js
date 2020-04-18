@@ -1,9 +1,6 @@
 import React from 'react';
 import p5 from 'p5';
 import SimplexNoise from 'simplex-noise/simplex-noise';
-
-
-
 export default class Grid extends React.Component{
     constructor(props){
         super(props)
@@ -19,7 +16,7 @@ export default class Grid extends React.Component{
     }
 
     Sketch = p => {
-        let simplex, ran, r1, size, time;
+        let simplex, ran, size, time;
         const {color1} = this.state;
         p.setup = () => {
             if(p.windowWidth < 500) {
@@ -30,7 +27,6 @@ export default class Grid extends React.Component{
             
             simplex = new SimplexNoise('seed');
             ran = p.random(1000);
-            r1 = Math.round(Math.random()*5);
             size = 25;
             time = 0;
         }
@@ -38,9 +34,9 @@ export default class Grid extends React.Component{
         p.draw = () => {
             p.background(50);
             grid(time);
-            // fps();
             ++time;
         }
+
         const grid = (time) => {
             let t = time*0.001;
             for(let i = 1; i<p.width; i+=size) {
@@ -52,6 +48,7 @@ export default class Grid extends React.Component{
                 }
             }
         }
+        
         p.windowResized = () => {
             if(p.windowWidth < 500) {
                 p.resizeCanvas(p.windowWidth, 100);
@@ -60,15 +57,7 @@ export default class Grid extends React.Component{
                 p.resizeCanvas(p.windowWidth,150);
             }
         }
-        // const fps = () => {
-        //     let f  = Math.round(p.frameRate());
-        //     this.setState({
-        //         fps: f
-        //      },
-        //      ()=>console.log("FPS:",this.state.fps)
-        //      );
-        // }
-    }
+     }
 
     render(){
         return (

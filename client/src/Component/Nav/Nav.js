@@ -5,12 +5,29 @@ import './Nav.css';
 
 class Nav extends React.Component{
     state = {
-        trig: false
+        display: 'block' 
+    }
+    componentDidMount() {
+        this.checkForNav();
+    }
+
+    checkForNav = () => {
+        if(window.location.pathname === '/playground') {
+            this.setState({
+                display: 'none'
+            })
+        } else {
+            this.setState({
+                display: 'block'
+            })
+        }
+
     }
   
     render(){
+        
         return(
-            <div className='nav-container'>
+            <div className='nav-container' style={{display: this.state.display}}>
                <Grid /> 
                  <div className='p5-menu'>
                 <div className='p5-title'>

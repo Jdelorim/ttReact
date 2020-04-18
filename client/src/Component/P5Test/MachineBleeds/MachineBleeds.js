@@ -6,18 +6,20 @@ import "p5/lib/addons/p5.sound";
 
 export default class MachineBleeds extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.myRef = React.createRef();
     }
     state= {
-        fps: '',
+        // fps: '',
         myDisplay: 'inline'
     }
 
     componentDidMount() {
         this.myP5 = new p5(this.Sketch, this.myRef.current);
+        console.log(this.myRef);
     }
-
+  
+  
     Sketch = p => {
         let MB, time, offscreen;
        
@@ -29,6 +31,7 @@ export default class MachineBleeds extends React.Component{
             time = 0;
             offscreen = p.createGraphics(400, 400, p.P2D);
         }
+
         p.draw = () => {
             p.background(100,0,0,10);
             offscreen.background(0);
@@ -37,25 +40,27 @@ export default class MachineBleeds extends React.Component{
             p.rotateX(time *.001);
             p.rotateY(time *.01);
             p.rotateZ(time *.02);
-            
             p.texture(offscreen);
             p.box(400,400,400);
-            fps();
-        
-             ++time;
+            
+           //fps();
+            ++time;
         }
-        const fps = () => {
-            let f  = Math.round(p.frameRate());
-            this.setState({
-                fps: f
-             },
-            //   ()=>console.log("FPS:",this.state.fps)
-             );
-        }
+        // const fps = () => {
+        //     let f  = Math.round(p.frameRate());
+        //     this.setState({
+        //         fps: f
+        //      },
+        //     //   ()=>console.log("FPS:",this.state.fps)
+        //      );
+        // }
+
         p.windowResized = () => {
             p.resizeCanvas(p.windowWidth, p.windowHeight-8);
         }
     }
+
+  
 
     render(){
         return (
