@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 4000;
 // const enforce = require('express-sslify');
 // app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
+require('./routes/index')(app);
+
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static("client/build"));
 }
