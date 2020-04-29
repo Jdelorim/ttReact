@@ -1,0 +1,26 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container{
+   padding: 1rem;
+
+}
+
+.footer-mid {
+    text-align: center;
+    margin-top: -20px;
+    
+}
+
+.footer-left {
+    text-align: left;
+
+}
+
+.footer-right{
+    text-align: right;
+    margin-top: -20px;
+}

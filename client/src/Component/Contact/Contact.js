@@ -74,11 +74,13 @@ class Contact extends React.Component {
                                        value={this.state.message} onChange={this.onChange} name='message'></textarea>
                                     </div>
                                 </div>
-                                <button type='submit'>
-                                    Send Message
-                                </button>
-                           </form>
-                           <div className='social-media'>
+                                <div className='form-group'>
+                                    <button type='submit'>
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                           {/* <div className='social-media'>
                                <div className='instagram'>
                                    fdfdfdfdsffsdfd
                                </div>
@@ -88,7 +90,7 @@ class Contact extends React.Component {
                                <div className='instagram'>
                                    fdfdfdfdsffsdfd
                                </div>
-                           </div>
+                           </div> */}
                         </div>
                     </div>
                </div>

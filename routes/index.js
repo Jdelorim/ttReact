@@ -1,11 +1,12 @@
 'use strict'
 const ttRoutes = require('express').Router();
+
 module.exports = app => {
     ttRoutes.route('/contact').post((req, res) => {
         console.log('in the route');
         console.log(req.body);
         
-        if(process.env.NODE_ENV === 'production') {
+    if(process.env.NODE_ENV === 'production') {
         const body = req.body.message;
         const email = req.body.email;
         const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
@@ -46,6 +47,8 @@ module.exports = app => {
            console.log(error.response.statusCode);
          });
 
+        } else {
+            res.send({msg: 'sent!'});
         }
          
 });
