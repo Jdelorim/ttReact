@@ -1,6 +1,8 @@
 .blog {
     padding: 1rem;
     font-family: Arial;
+    letter-spacing: 0.11em;
+    line-height: 1.5em;
 }
 
 .blog-header {

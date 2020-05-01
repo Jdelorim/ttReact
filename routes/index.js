@@ -21,7 +21,7 @@ module.exports = app => {
                    email: 'joshuadelorimier@gmail.com'
                  },
                ],
-               subject: `TT New message from ${req.body.fullName}`
+               subject: `TRASHTRASH: New message from ${req.body.fullName}`
              },
            ],
            from: {

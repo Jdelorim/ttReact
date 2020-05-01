@@ -2,16 +2,22 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-color: rgba(10, 53, 63, 1);
+    margin-top: 100px;
+    display: inline;
 }
 
 .footer-container{
    padding: 1rem;
 
 }
-
+.footer-devsite a{
+    color: white;
+    text-decoration: none;
+}
 .footer-mid {
     text-align: center;
-    margin-top: -20px;
+    margin-top: -50px;
     
 }
 
@@ -21,6 +27,8 @@
 }
 
 .footer-right{
+
     text-align: right;
-    margin-top: -20px;
+    margin-top: -50px;
+   
 }

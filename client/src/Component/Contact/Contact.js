@@ -80,17 +80,6 @@ class Contact extends React.Component {
                                     </button>
                                 </div>
                             </form>
-                           {/* <div className='social-media'>
-                               <div className='instagram'>
-                                   fdfdfdfdsffsdfd
-                               </div>
-                               <div className='instagram'>
-                                   fdfdfdfdsffsdfd
-                               </div>
-                               <div className='instagram'>
-                                   fdfdfdfdsffsdfd
-                               </div>
-                           </div> */}
                         </div>
                     </div>
                </div>

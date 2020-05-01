@@ -4,13 +4,14 @@
     margin: 0 auto;
     width: 80%;
     padding-bottom: 2em;
+    margin-bottom: 1em;
    
 }
 .bio-header {
     background-color: rgba(10, 53, 63, 1);
     padding-bottom: 0em;
     padding-top: 0em;
-    text-align: Left;
+    text-align: left;
     font-size: 2em;
     padding-left: 1em;
     font-family: Arial Black;
@@ -28,7 +29,7 @@
 
 .bio p{
     font-family: Arial;
-    text-align: Left;
+    text-align: left;
     padding-right: 1em;
     padding-left: 1em;
     padding-top: 1em;
