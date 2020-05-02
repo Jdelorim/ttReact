@@ -1,18 +1,15 @@
 import React from 'react';
 import WorksMenu from '../Works/WorksMenu';
-import './Software.css';
+import './Film.css';
 
-class Software extends React.Component{
+class Film extends React.Component{
     render(){
         return(
             <div className="main">
             <div className="works-container">
                 <WorksMenu />
-              <div className="software-item">
-                  <div className='software-item-header'>
-                      GenBots VR
-                  </div>
-
+              <div className="works">
+                Film
              </div>
             </div>
           </div>
@@ -20,4 +17,4 @@ class Software extends React.Component{
     }
 }
 
-export default Software;
+export default Film;

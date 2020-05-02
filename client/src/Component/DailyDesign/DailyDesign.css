@@ -1,0 +1,17 @@
+.daily-container{
+    border: 1px solid white;
+    margin: 0 auto;
+    width: 80%;
+    padding-bottom: 2em;
+    margin-bottom: 1em;
+}
+
+.daily-header{
+    background-color: rgba(10, 53, 63, 1);
+    padding-bottom: 0em;
+    padding-top: 0em;
+    text-align: left;
+    font-size: 2em;
+    padding-left: 1em;
+    font-family: Arial Black;
+}
