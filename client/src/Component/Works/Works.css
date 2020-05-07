@@ -3,6 +3,7 @@
     border: 1px solid white;
     margin: 0 auto;
     width: 80%;
+    max-width: 1000px;
     padding-bottom: 2em;
     margin-bottom: 1em;
 }
@@ -14,6 +15,16 @@
     font-size: 1.5em;
     padding-left: 1em;
     font-family: Arial Black;
+}
+.works p{
+    padding: 1em;
+    font-family: Arial;
+    text-align: left;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-top: 1em;
+    letter-spacing: 0.11em;
+    line-height: 1.5em;
 }
 
 .works-header a{

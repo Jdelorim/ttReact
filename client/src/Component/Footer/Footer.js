@@ -24,10 +24,10 @@ class Footer extends React.Component{
                 </div>
                 <div className='footer-right'>
                     <span className='instagram-icon-link'>
-                        <a href='https://www.instagram.com/trashtrashvisuals/' target='_blank' rel="noopener noreferrer"><img src='/img/instagramIcon.png' width='80' alt='instagram trashtrash' /></a>
+                        <a href='https://www.instagram.com/trashtrashvisuals/' target='_blank' rel="noopener noreferrer"><img src='/img/instagramIcon.png' width='60' alt='instagram trashtrash' /></a>
                     </span>
                     <span className='twitter-icon-link'>
-                        <a href='https://twitter.com/JoshuaDeLorimi1/' target='_blank' rel="noopener noreferrer"><img src='/img/twitter_PNG1.png' width='60' alt='joshua deLorimier twitter' /></a>
+                        <a href='https://twitter.com/JoshuaDeLorimi1/' target='_blank' rel="noopener noreferrer"><img src='/img/twitter_PNG1.png' width='50' alt='joshua deLorimier twitter' /></a>
                     </span>
                 </div>
             </div>

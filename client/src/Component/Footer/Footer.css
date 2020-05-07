@@ -2,33 +2,52 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+   
+    padding-bottom: 1em;
     background-color: rgba(10, 53, 63, 1);
-    margin-top: 100px;
     display: inline;
+    font-size: 14px;
 }
 
 .footer-container{
-   padding: 1rem;
+   padding: 0.5rem;
 
 }
 .footer-devsite a{
     color: white;
     text-decoration: none;
+    
 }
 .footer-mid {
     text-align: center;
-    margin-top: -50px;
+    margin-top: -54px;
+   
     
 }
 
 .footer-left {
     text-align: left;
+    
+  
 
 }
 
 .footer-right{
 
     text-align: right;
-    margin-top: -50px;
+   margin-top: -20px; 
    
+   
+}
+
+@media only screen and (max-width: 500px) {
+
+   .footer {
+       font-size: 12px;
+   }
+   .footer-mid {
+    text-align: center;
+    margin-top: -50px;
+   }
+
 }

@@ -45,7 +45,7 @@ export default class MBClass {
          let c = map(this.p.sin(i*(time*0.01)*2),-1, 1,60,100);
         
         this.toffset[i] = map(i,0,this.amount, w,w1);
-         let s = map(i,0,this.amount,90,100);
+         //let s = map(i,0,this.amount,90,100);
         
 
         let n1x = map(this.simplex.noise2D(time*speed+this.toffset[i],this.r2), -1,1,-dist,dist);
@@ -56,7 +56,7 @@ export default class MBClass {
         let n3y = map(this.simplex.noise2D(time*speed+this.toffset[i],this.r3), -1,1,-dist,dist);
 
          //this.p.stroke(c+this.toffset[i],s+this.toffset[i], s);
-        let hue = map(this.p.sin(time*(speed*4)+(this.toffset[i]*2)), -1,1,10,100);
+        //let hue = map(this.p.sin(time*(speed*4)+(this.toffset[i]*2)), -1,1,10,100);
          this.p.stroke(c, 100, 100);
         
         // let sw1 = map(i,0,this.amount,3,20);

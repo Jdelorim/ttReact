@@ -7,7 +7,7 @@ class DailyDesign extends React.Component{
     render(){
         return(
             
-                        <MachineBleeds width='800' height='400' />
+            <MachineBleeds width='800' height='400' />
           
         )
     }
