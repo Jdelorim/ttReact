@@ -7,8 +7,10 @@ class DailyDesign extends React.Component{
     render(){
         return(
             
-            // <MachineBleeds width='800' height='400' />
-             <P5Hex width='800' height='500'/>
+           <div className='main'>
+               <P5Hex width='800' height='500'/>
+           </div>
+             
             
           
         )
