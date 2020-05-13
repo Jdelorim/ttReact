@@ -4,7 +4,8 @@
     margin: 0 auto;
     width: 80%;
     padding-bottom: 2em;
-    margin-bottom: 1em;
+    
+    
    
 }
 .bio-header {
@@ -38,7 +39,7 @@
 
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
     .bio img {
         width: 100%;
         max-width: 300px;
