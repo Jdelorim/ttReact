@@ -22,15 +22,12 @@ if(process.env.NODE_ENV === 'production') {
 
 
 app.get('/*', (req, res) => {
-    console.log('hitting the route');
-    res.sendFile(path.join(__dirname, '../client/public/index.html'), function(err) {
+  res.sendFile(path.join(__dirname, './client/public/index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }
     })
   })
-
-  
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
